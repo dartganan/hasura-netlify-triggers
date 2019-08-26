@@ -37,9 +37,6 @@ exports.handler = (event, context, callback) => {
 
   const payload = JSON.parse(event.body);
 
-  console.log("payload['event']['data']['new']['question_open'] -----------------");
-  console.log(payload['event']['data']['new']['question_open']);
-
   if(payload['event']['data']['new']['question_open']){
 
     var nameEvent = payload['event']['data']['new']['title'];
