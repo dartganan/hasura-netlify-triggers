@@ -37,23 +37,31 @@ exports.handler = (event, context, callback) => {
 
   const payload = JSON.parse(event.body);
 
-  var nameEvent = payload['event']['data']['new']['name'];
+  console.log("payload['event']['data']['new']['question_open'] -----------------");
+  console.log(payload['event']['data']['new']['question_open']);
+
+  if(payload['event']['data']['new']['question_open']){
+
+    var nameEvent = payload['event']['data']['new']['title'];
+
+    var message = { 
+      app_id: "0f25b644-56f3-4fa2-96bb-f5a72606ebb8",
+      headings: {"en": 'Faça uma pergunta na palestra'},
+      contents: {"en": nameEvent},
+      included_segments: ["All"]
+    };
+  
+    callback(null, {
+      statusCode: 200,
+      body: 'Push enviado do evento: ' + nameEvent,
+    });
+  
+    console.log("push enviado do evento ------------------------------------------>>>>>>");
+    console.log(nameEvent);
+  
+    sendNotification(message);
+
+  }
 
 
-  var message = { 
-    app_id: "0f25b644-56f3-4fa2-96bb-f5a72606ebb8",
-    //headings: {"en": 'Faça uma pergunta na palestra'},
-    contents: {"en": "nameEvent"},
-    included_segments: ["All"]
-  };
-
-  console.log("ddddddddddddddddddddddddddd - ----");
-  console.log(payload);
-
-  callback(null, {
-    statusCode: 200,
-    body: 'Enviar Push rodando',
-  });
-
-  sendNotification(message);
 };
