@@ -42,7 +42,7 @@ exports.handler = (event, context, callback) => {
 
   var message = { 
     app_id: "0f25b644-56f3-4fa2-96bb-f5a72606ebb8",
-    headings: {"en": 'Faça uma pergunta na palestra'},
+    //headings: {"en": 'Faça uma pergunta na palestra'},
     contents: {"en": nameEvent},
     included_segments: ["All"]
   };
