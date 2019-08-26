@@ -35,9 +35,10 @@ var sendNotification = function(data) {
 
 exports.handler = (event, context, callback) => {
 
-  const playload = JSON.parse(event.body);
+  const payload = JSON.parse(event.body);
 
-  var nameEvent = playload['event']['data']['new']['name'];
+  var nameEvent = payload['event']['data']['new']['name'];
+
 
   var message = { 
     app_id: "0f25b644-56f3-4fa2-96bb-f5a72606ebb8",
@@ -47,7 +48,7 @@ exports.handler = (event, context, callback) => {
   };
 
   console.log("ddddddddddddddddddddddddddd - ----");
-  console.log(playload['event']['data']['new']['name']);
+  console.log(payload);
 
   callback(null, {
     statusCode: 200,
