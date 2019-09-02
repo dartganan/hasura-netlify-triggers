@@ -59,6 +59,28 @@ exports.handler = (event, context, callback) => {
     sendNotification(message);
 
   }
+  if(payload['event']['data']['new']['user_id']){
+
+    var nameEvent = payload['event']['data']['new']['content'];
+
+    var message = { 
+      app_id: "0f25b644-56f3-4fa2-96bb-f5a72606ebb8",
+      headings: {"en": 'Nova mensagem'},
+      contents: {"en": nameEvent},
+      included_segments: ["All"]
+    };
+  
+    callback(null, {
+      statusCode: 200,
+      body: 'Push enviado do evento: ' + nameEvent,
+    });
+  
+    console.log("push enviado do evento ------------------------------------------>>>>>>");
+    console.log(nameEvent);
+  
+    sendNotification(message);
+
+  }
 
 
 };
